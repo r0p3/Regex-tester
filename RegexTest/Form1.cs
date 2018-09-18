@@ -23,6 +23,7 @@ namespace RegexTest
             tbPattern.TextChanged += saveTextboxesChanged;
             tbPatternName.TextChanged += saveTextboxesChanged;
             readAllPatternsFromFile();
+            MessageBox.Show("");
         }
 
         private void saveTextboxesChanged(object sender, EventArgs e)
