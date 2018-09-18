@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tbText = new System.Windows.Forms.TextBox();
             this.lblText = new System.Windows.Forms.Label();
             this.tbPattern = new System.Windows.Forms.TextBox();
             this.lblPattern = new System.Windows.Forms.Label();
@@ -46,14 +45,8 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnUnselect = new System.Windows.Forms.Button();
+            this.tbText = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
-            // 
-            // tbText
-            // 
-            this.tbText.Location = new System.Drawing.Point(12, 25);
-            this.tbText.Name = "tbText";
-            this.tbText.Size = new System.Drawing.Size(260, 20);
-            this.tbText.TabIndex = 0;
             // 
             // lblText
             // 
@@ -66,7 +59,7 @@
             // 
             // tbPattern
             // 
-            this.tbPattern.Location = new System.Drawing.Point(12, 77);
+            this.tbPattern.Location = new System.Drawing.Point(6, 244);
             this.tbPattern.Name = "tbPattern";
             this.tbPattern.Size = new System.Drawing.Size(260, 20);
             this.tbPattern.TabIndex = 2;
@@ -74,7 +67,7 @@
             // lblPattern
             // 
             this.lblPattern.AutoSize = true;
-            this.lblPattern.Location = new System.Drawing.Point(12, 61);
+            this.lblPattern.Location = new System.Drawing.Point(6, 228);
             this.lblPattern.Name = "lblPattern";
             this.lblPattern.Size = new System.Drawing.Size(41, 13);
             this.lblPattern.TabIndex = 3;
@@ -83,7 +76,7 @@
             // lblMatchedCount
             // 
             this.lblMatchedCount.AutoSize = true;
-            this.lblMatchedCount.Location = new System.Drawing.Point(12, 117);
+            this.lblMatchedCount.Location = new System.Drawing.Point(3, 267);
             this.lblMatchedCount.Name = "lblMatchedCount";
             this.lblMatchedCount.Size = new System.Drawing.Size(47, 13);
             this.lblMatchedCount.TabIndex = 5;
@@ -91,16 +84,16 @@
             // 
             // rbMatchedText
             // 
-            this.rbMatchedText.Location = new System.Drawing.Point(12, 133);
+            this.rbMatchedText.Location = new System.Drawing.Point(6, 283);
             this.rbMatchedText.Name = "rbMatchedText";
-            this.rbMatchedText.Size = new System.Drawing.Size(257, 109);
+            this.rbMatchedText.Size = new System.Drawing.Size(257, 200);
             this.rbMatchedText.TabIndex = 6;
             this.rbMatchedText.Text = "";
             // 
             // btnSave
             // 
             this.btnSave.Enabled = false;
-            this.btnSave.Location = new System.Drawing.Point(194, 298);
+            this.btnSave.Location = new System.Drawing.Point(197, 531);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 8;
@@ -111,7 +104,7 @@
             // btnLoad
             // 
             this.btnLoad.Enabled = false;
-            this.btnLoad.Location = new System.Drawing.Point(823, 298);
+            this.btnLoad.Location = new System.Drawing.Point(823, 531);
             this.btnLoad.Name = "btnLoad";
             this.btnLoad.Size = new System.Drawing.Size(75, 23);
             this.btnLoad.TabIndex = 9;
@@ -140,7 +133,7 @@
             this.listView1.Location = new System.Drawing.Point(278, 51);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(620, 241);
+            this.listView1.Size = new System.Drawing.Size(620, 474);
             this.listView1.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.listView1.TabIndex = 11;
             this.listView1.UseCompatibleStateImageBehavior = false;
@@ -159,7 +152,7 @@
             // 
             // tbPatternName
             // 
-            this.tbPatternName.Location = new System.Drawing.Point(9, 272);
+            this.tbPatternName.Location = new System.Drawing.Point(12, 505);
             this.tbPatternName.Name = "tbPatternName";
             this.tbPatternName.Size = new System.Drawing.Size(260, 20);
             this.tbPatternName.TabIndex = 12;
@@ -167,7 +160,7 @@
             // button1
             // 
             this.button1.Enabled = false;
-            this.button1.Location = new System.Drawing.Point(742, 298);
+            this.button1.Location = new System.Drawing.Point(742, 531);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 13;
@@ -195,7 +188,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 256);
+            this.label1.Location = new System.Drawing.Point(12, 489);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(97, 13);
             this.label1.TabIndex = 16;
@@ -204,7 +197,7 @@
             // btnUnselect
             // 
             this.btnUnselect.Enabled = false;
-            this.btnUnselect.Location = new System.Drawing.Point(661, 298);
+            this.btnUnselect.Location = new System.Drawing.Point(661, 531);
             this.btnUnselect.Name = "btnUnselect";
             this.btnUnselect.Size = new System.Drawing.Size(75, 23);
             this.btnUnselect.TabIndex = 17;
@@ -212,11 +205,20 @@
             this.btnUnselect.UseVisualStyleBackColor = true;
             this.btnUnselect.Click += new System.EventHandler(this.btnUnselect_Click);
             // 
+            // tbText
+            // 
+            this.tbText.Location = new System.Drawing.Point(9, 25);
+            this.tbText.Name = "tbText";
+            this.tbText.Size = new System.Drawing.Size(257, 200);
+            this.tbText.TabIndex = 18;
+            this.tbText.Text = "";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(910, 329);
+            this.ClientSize = new System.Drawing.Size(910, 563);
+            this.Controls.Add(this.tbText);
             this.Controls.Add(this.btnUnselect);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblSearch);
@@ -232,7 +234,6 @@
             this.Controls.Add(this.lblPattern);
             this.Controls.Add(this.tbPattern);
             this.Controls.Add(this.lblText);
-            this.Controls.Add(this.tbText);
             this.Name = "Form1";
             this.Text = "Regex Tester";
             this.ResumeLayout(false);
@@ -241,8 +242,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox tbText;
         private System.Windows.Forms.Label lblText;
         private System.Windows.Forms.TextBox tbPattern;
         private System.Windows.Forms.Label lblPattern;
@@ -260,6 +259,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnUnselect;
+        private System.Windows.Forms.RichTextBox tbText;
     }
 }
 

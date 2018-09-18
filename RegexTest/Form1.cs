@@ -44,8 +44,8 @@ namespace RegexTest
                 {
                     if (item.Length > 3)
                     {
-                        ListViewItem lvi = new ListViewItem(item.Split(':')[0]);
-                        lvi.SubItems.Add(item.Split(':')[1]);
+                        ListViewItem lvi = new ListViewItem(decodeStringToSaveFile(item.Split(':')[0]));
+                        lvi.SubItems.Add(decodeStringToSaveFile(item.Split(':')[1]));
                         listView1.Items.Add(lvi);
                     }
                 }
@@ -76,12 +76,13 @@ namespace RegexTest
             }
         }
 
-        //Saves the current pattern with its name to the patterns.txt file
+        //Saves the current pattern with its name to the patterns.txt file and name does not contains special chars
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (tbPattern.TextLength > 0 && tbPatternName.TextLength > 0)
             {
-                File.AppendAllText(path, tbPatternName.Text.Replace("\r","") + ":" + tbPattern.Text.Replace("\r", "") + Environment.NewLine);
+                string fileLine = encodeStringToSaveFile(tbPatternName.Text, tbPattern.Text);
+                File.AppendAllText(path, fileLine);
                 MessageBox.Show("The current pattern was saved with the name: " + tbPatternName.Text, "Saved");
                 tbPatternName.Clear();
                 readAllPatternsFromFile();
@@ -128,7 +129,7 @@ namespace RegexTest
                     string newContent = "";
                     foreach (var item in File.ReadAllText(path).Split('\n'))
                     {
-                        if (item.Replace("\r", "") != listView1.SelectedItems[0].SubItems[0].Text.Replace("\r", "") + ":" + listView1.SelectedItems[0].SubItems[1].Text.Replace("\r", ""))
+                        if (item.Replace("\r", "") != encodeStringToSaveFile(listView1.SelectedItems[0].SubItems[0].Text.Replace("\r", ""), listView1.SelectedItems[0].SubItems[1].Text.Replace("\r", "")).Replace("\r\n", ""))
                             newContent += item.Replace("\r", "") + Environment.NewLine;
                     }
                     File.WriteAllText(path, newContent.Replace("\r", ""));
@@ -158,6 +159,38 @@ namespace RegexTest
         private void btnUnselect_Click(object sender, EventArgs e)
         {
             listView1.SelectedItems.Clear();
+        }
+
+        //True if plaintext, false if not
+        private string encodeStringToSaveFile(string name, string pattern)
+        {
+            string saveLine = "";
+            foreach (var item in name.ToArray())
+            {
+                saveLine += (int)item + " ";
+            }
+            saveLine += ":";
+            foreach (var item in pattern.ToCharArray())
+            {
+                saveLine += (int)item + " ";
+            }
+            return saveLine + Environment.NewLine;
+        }
+        private string decodeStringToSaveFile(string text)
+        {
+            string saveLine = "";
+            try
+            {
+                foreach (var item in text.Split(' '))
+                {
+                    saveLine += (char)int.Parse(item.ToString());
+                }
+            }
+            catch
+            {
+
+            }
+            return saveLine;
         }
     }
 }
